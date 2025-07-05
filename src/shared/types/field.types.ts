@@ -1,6 +1,6 @@
 export interface IField {
-	name: any;
-	value: any;
+	name: [string, string];
+	value: [string, null] | number;
 	type: 'string' | 'integer';
 	access: string[];
 }

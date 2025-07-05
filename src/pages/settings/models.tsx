@@ -1,4 +1,4 @@
-import { ModelsTable } from '@/features/models/components/table/models-table';
+import { ModelsTable } from '@/features/models/components';
 
 export function ModelsPage() {
 	return (

@@ -1,17 +1,23 @@
+import { useEffect } from 'react';
 import { Route, Routes } from 'react-router';
 
 import { Layout } from './shared/components/shared';
 import { pagesUtils } from './shared/configs';
 import { SettingsLayout } from './shared/layouts';
+import { useAccessStore } from './stores';
 
 export function App() {
+	const getAccess = useAccessStore((state) => state.getAccess);
 	const globalPages = pagesUtils.getPagesByCategory('global');
 	const settingsPages = pagesUtils.getPagesByCategory('settings');
+
+	useEffect(() => {
+		getAccess();
+	}, [getAccess]);
 
 	return (
 		<Layout>
 			<Routes>
-				{/* Глобальные страницы */}
 				{globalPages.map((page) => (
 					<Route
 						key={page.url}

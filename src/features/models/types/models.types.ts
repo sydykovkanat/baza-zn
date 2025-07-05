@@ -1,4 +1,4 @@
-import type { IField } from '@/shared/types';
+import type { IField, ILanguage } from '@/shared/types';
 
 export interface IModel {
 	_id: string;
@@ -12,7 +12,7 @@ export interface IModel {
 	};
 	generation: number;
 	publicised_date: Date | null;
-	value_localization: string[];
+	value_localization: ILanguage[];
 	removed: boolean;
 	is_active: boolean;
 	comment: string | null;

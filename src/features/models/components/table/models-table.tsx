@@ -8,10 +8,12 @@ export function ModelsTable() {
 	const { models, isModelsLoading } = useGetModels();
 
 	return (
-		<DataTable
-			columns={modelsTableColumns}
-			data={models || []}
-			isLoading={isModelsLoading}
-		/>
+		<>
+			<DataTable
+				columns={modelsTableColumns}
+				data={models || []}
+				isLoading={isModelsLoading}
+			/>
+		</>
 	);
 }

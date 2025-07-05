@@ -1,9 +1,10 @@
 import type { ColumnDef } from '@tanstack/react-table';
-import { Trash2Icon } from 'lucide-react';
+import { InfoIcon, Trash2Icon } from 'lucide-react';
 
 import { Badge, Button } from '@/shared/components/ui';
 
 import type { IModel } from '../../types';
+import { ModelsDetailDialog } from '../dialogs';
 
 export const modelsTableColumns: ColumnDef<IModel>[] = [
 	{
@@ -87,13 +88,24 @@ export const modelsTableColumns: ColumnDef<IModel>[] = [
 	{
 		accessorKey: 'actions',
 		header: 'Действия',
-		cell: () => {
+		cell: ({ row }) => {
+			const model = row.original;
+
 			return (
 				<div className='flex items-center gap-2'>
+					<ModelsDetailDialog model={model}>
+						<Button
+							size={'icon'}
+							variant={'ghost'}
+						>
+							<InfoIcon />
+						</Button>
+					</ModelsDetailDialog>
+
 					<Button
 						size={'icon'}
 						variant={'ghost'}
-						className='text-muted-foreground hover:bg-destructive/20! hover:text-destructive'
+						className='hover:bg-destructive/20! hover:text-destructive'
 					>
 						<Trash2Icon />
 					</Button>

@@ -1,5 +1,3 @@
-'use client';
-
 import {
 	type ColumnDef,
 	flexRender,
@@ -21,12 +19,16 @@ interface DataTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[];
 	data: TData[];
 	isLoading?: boolean;
+	onRowClick?: (row: TData) => void;
+	rowClassName?: string;
 }
 
 export function DataTable<TData, TValue>({
 	columns,
 	data,
 	isLoading = false,
+	onRowClick,
+	rowClassName,
 }: DataTableProps<TData, TValue>) {
 	const table = useReactTable({
 		data,
@@ -70,6 +72,12 @@ export function DataTable<TData, TValue>({
 							<TableRow
 								key={row.id}
 								data-state={row.getIsSelected() && 'selected'}
+								onClick={() => onRowClick?.(row.original)}
+								className={
+									onRowClick
+										? `hover:bg-muted/50 cursor-pointer ${rowClassName || ''}`
+										: rowClassName
+								}
 							>
 								{row.getVisibleCells().map((cell) => (
 									<TableCell key={cell.id}>
