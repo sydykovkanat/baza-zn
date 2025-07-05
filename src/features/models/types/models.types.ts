@@ -1,3 +1,5 @@
+import type { IField } from '@/shared/types';
+
 export interface IModel {
 	_id: string;
 	previous_model: {
@@ -15,7 +17,7 @@ export interface IModel {
 	is_active: boolean;
 	comment: string | null;
 	title: string;
-	data: Record<string, any>;
+	data: Record<string, IField>;
 	createdAt: Date;
 	updatedAt: Date;
 	previous_model_data?: IModel | null;
