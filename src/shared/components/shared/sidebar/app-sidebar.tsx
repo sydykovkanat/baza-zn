@@ -1,6 +1,7 @@
 'use client';
 
 import {
+	BookTextIcon,
 	CameraIcon,
 	ChartBarIcon,
 	DatabaseIcon,
@@ -9,7 +10,6 @@ import {
 	FolderIcon,
 	HelpCircleIcon,
 	HelpingHandIcon,
-	HexagonIcon,
 	LayoutDashboardIcon,
 	ListIcon,
 	SearchIcon,
@@ -17,6 +17,7 @@ import {
 	UsersIcon,
 } from 'lucide-react';
 import * as React from 'react';
+import { Link } from 'react-router';
 
 import {
 	Sidebar,
@@ -27,6 +28,7 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from '@/shared/components/ui';
+import { PAGES } from '@/shared/configs';
 
 import { NavDocuments } from './nav-documents';
 import { NavMain } from './nav-main';
@@ -117,7 +119,7 @@ const data = {
 	navSecondary: [
 		{
 			title: 'Settings',
-			url: '#',
+			url: `${PAGES.settings.pages[0].url.slice(1)}`,
 			icon: SettingsIcon,
 		},
 		{
@@ -163,10 +165,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 							asChild
 							className='data-[slot=sidebar-menu-button]:!p-1.5'
 						>
-							<a href='#'>
-								<HexagonIcon className='!size-5' />
-								<span className='text-base font-semibold'>Acme Inc.</span>
-							</a>
+							<Link to={PAGES.global.pages[0].url}>
+								<BookTextIcon className='!size-5' />
+								<span className='text-base font-semibold'>Knowi.</span>
+							</Link>
 						</SidebarMenuButton>
 					</SidebarMenuItem>
 				</SidebarMenu>

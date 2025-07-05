@@ -1,4 +1,4 @@
-export function Home() {
+export function HomePage() {
 	return (
 		<div className='h-full w-full'>
 			<h1 className='text-2xl font-bold'>Welcome to the Home Page</h1>

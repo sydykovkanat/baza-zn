@@ -1,8 +1,8 @@
 import {
+	BellIcon,
 	CreditCardIcon,
-	DotIcon,
-	DotSquareIcon,
 	LogOutIcon,
+	MoreVerticalIcon,
 	UserCircle,
 } from 'lucide-react';
 
@@ -56,7 +56,7 @@ export function NavUser({
 									{user.email}
 								</span>
 							</div>
-							<DotSquareIcon className='ml-auto size-4' />
+							<MoreVerticalIcon className='ml-auto size-4' />
 						</SidebarMenuButton>
 					</DropdownMenuTrigger>
 					<DropdownMenuContent
@@ -93,7 +93,7 @@ export function NavUser({
 								Billing
 							</DropdownMenuItem>
 							<DropdownMenuItem>
-								<DotIcon />
+								<BellIcon />
 								Notifications
 							</DropdownMenuItem>
 						</DropdownMenuGroup>
