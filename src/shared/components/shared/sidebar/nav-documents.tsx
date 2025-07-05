@@ -1,10 +1,11 @@
 import {
-	type Icon,
-	IconDots,
-	IconFolder,
-	IconShare3,
-	IconTrash,
-} from '@tabler/icons-react';
+	FolderIcon,
+	type LucideIcon,
+	MoreHorizontalIcon,
+	MoreVerticalIcon,
+	ShareIcon,
+	Trash2Icon,
+} from 'lucide-react';
 
 import {
 	DropdownMenu,
@@ -27,7 +28,7 @@ export function NavDocuments({
 	items: {
 		name: string;
 		url: string;
-		icon: Icon;
+		icon: LucideIcon;
 	}[];
 }) {
 	const { isMobile } = useSidebar();
@@ -50,7 +51,7 @@ export function NavDocuments({
 									showOnHover
 									className='data-[state=open]:bg-accent rounded-sm'
 								>
-									<IconDots />
+									<MoreVerticalIcon />
 									<span className='sr-only'>More</span>
 								</SidebarMenuAction>
 							</DropdownMenuTrigger>
@@ -60,16 +61,16 @@ export function NavDocuments({
 								align={isMobile ? 'end' : 'start'}
 							>
 								<DropdownMenuItem>
-									<IconFolder />
+									<FolderIcon />
 									<span>Open</span>
 								</DropdownMenuItem>
 								<DropdownMenuItem>
-									<IconShare3 />
+									<ShareIcon />
 									<span>Share</span>
 								</DropdownMenuItem>
 								<DropdownMenuSeparator />
 								<DropdownMenuItem variant='destructive'>
-									<IconTrash />
+									<Trash2Icon />
 									<span>Delete</span>
 								</DropdownMenuItem>
 							</DropdownMenuContent>
@@ -78,7 +79,7 @@ export function NavDocuments({
 				))}
 				<SidebarMenuItem>
 					<SidebarMenuButton className='text-sidebar-foreground/70'>
-						<IconDots className='text-sidebar-foreground/70' />
+						<MoreHorizontalIcon className='text-sidebar-foreground/70' />
 						<span>More</span>
 					</SidebarMenuButton>
 				</SidebarMenuItem>

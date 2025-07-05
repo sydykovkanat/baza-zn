@@ -1,22 +1,21 @@
 'use client';
 
 import {
-	IconCamera,
-	IconChartBar,
-	IconDashboard,
-	IconDatabase,
-	IconFileAi,
-	IconFileDescription,
-	IconFileWord,
-	IconFolder,
-	IconHelp,
-	IconInnerShadowTop,
-	IconListDetails,
-	IconReport,
-	IconSearch,
-	IconSettings,
-	IconUsers,
-} from '@tabler/icons-react';
+	CameraIcon,
+	ChartBarIcon,
+	DatabaseIcon,
+	FileIcon,
+	FilesIcon,
+	FolderIcon,
+	HelpCircleIcon,
+	HelpingHandIcon,
+	HexagonIcon,
+	LayoutDashboardIcon,
+	ListIcon,
+	SearchIcon,
+	SettingsIcon,
+	UsersIcon,
+} from 'lucide-react';
 import * as React from 'react';
 
 import {
@@ -44,33 +43,33 @@ const data = {
 		{
 			title: 'Dashboard',
 			url: '#',
-			icon: IconDashboard,
+			icon: LayoutDashboardIcon,
 		},
 		{
 			title: 'Lifecycle',
 			url: '#',
-			icon: IconListDetails,
+			icon: ListIcon,
 		},
 		{
 			title: 'Analytics',
 			url: '#',
-			icon: IconChartBar,
+			icon: ChartBarIcon,
 		},
 		{
 			title: 'Projects',
 			url: '#',
-			icon: IconFolder,
+			icon: FolderIcon,
 		},
 		{
 			title: 'Team',
 			url: '#',
-			icon: IconUsers,
+			icon: UsersIcon,
 		},
 	],
 	navClouds: [
 		{
 			title: 'Capture',
-			icon: IconCamera,
+			icon: CameraIcon,
 			isActive: true,
 			url: '#',
 			items: [
@@ -86,7 +85,7 @@ const data = {
 		},
 		{
 			title: 'Proposal',
-			icon: IconFileDescription,
+			icon: FileIcon,
 			url: '#',
 			items: [
 				{
@@ -101,7 +100,7 @@ const data = {
 		},
 		{
 			title: 'Prompts',
-			icon: IconFileAi,
+			icon: FilesIcon,
 			url: '#',
 			items: [
 				{
@@ -119,34 +118,34 @@ const data = {
 		{
 			title: 'Settings',
 			url: '#',
-			icon: IconSettings,
+			icon: SettingsIcon,
 		},
 		{
 			title: 'Get Help',
 			url: '#',
-			icon: IconHelp,
+			icon: HelpCircleIcon,
 		},
 		{
 			title: 'Search',
 			url: '#',
-			icon: IconSearch,
+			icon: SearchIcon,
 		},
 	],
 	documents: [
 		{
 			name: 'Data Library',
 			url: '#',
-			icon: IconDatabase,
+			icon: DatabaseIcon,
 		},
 		{
 			name: 'Reports',
 			url: '#',
-			icon: IconReport,
+			icon: HelpingHandIcon,
 		},
 		{
 			name: 'Word Assistant',
 			url: '#',
-			icon: IconFileWord,
+			icon: FileIcon,
 		},
 	],
 };
@@ -165,7 +164,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 							className='data-[slot=sidebar-menu-button]:!p-1.5'
 						>
 							<a href='#'>
-								<IconInnerShadowTop className='!size-5' />
+								<HexagonIcon className='!size-5' />
 								<span className='text-base font-semibold'>Acme Inc.</span>
 							</a>
 						</SidebarMenuButton>

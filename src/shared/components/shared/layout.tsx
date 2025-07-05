@@ -17,7 +17,7 @@ export function Layout({ children }: PropsWithChildren) {
 			<AppSidebar variant='inset' />
 			<SidebarInset>
 				<SiteHeader />
-				<div className='flex flex-1 flex-col'>{children}</div>
+				<div className='flex h-full flex-1 flex-col p-4'>{children}</div>
 			</SidebarInset>
 		</SidebarProvider>
 	);

@@ -1,10 +1,17 @@
+import { Route, Routes } from 'react-router';
+
+import { Home } from './pages';
 import { Layout } from './shared/components/shared';
-import { Button } from './shared/components/ui';
 
 export function App() {
 	return (
 		<Layout>
-			<Button>Click</Button>
+			<Routes>
+				<Route
+					path='/'
+					element={<Home />}
+				/>
+			</Routes>
 		</Layout>
 	);
 }
