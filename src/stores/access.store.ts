@@ -3,8 +3,9 @@ import { create } from 'zustand';
 import { subscribeWithSelector } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 
+import type { IAccess } from '@/features/access/types';
+
 import { instance } from '@/shared/api';
-import type { IAccess } from '@/shared/types';
 import { logger } from '@/shared/utils';
 
 interface State {

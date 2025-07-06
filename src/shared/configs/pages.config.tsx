@@ -5,10 +5,19 @@ import {
 	LayoutDashboardIcon,
 	type LucideIcon,
 	Settings2Icon,
+	ShieldUserIcon,
+	UsersIcon,
 } from 'lucide-react';
 import type { ReactNode } from 'react';
 
-import { HomePage, InstancesPage, ModelsPage, ViewsPage } from '@/pages';
+import {
+	AccessPage,
+	HomePage,
+	InstancesPage,
+	ModelsPage,
+	UsersPage,
+	ViewsPage,
+} from '@/pages';
 
 interface IPage {
 	title: string;
@@ -74,6 +83,18 @@ export const PAGES: PagesStructure = {
 				url: '/settings/views',
 				icon: LayoutDashboardIcon,
 				component: <ViewsPage />,
+			},
+			{
+				title: 'Пользователи',
+				url: '/settings/users',
+				icon: UsersIcon,
+				component: <UsersPage />,
+			},
+			{
+				title: 'Доступы',
+				url: '/settings/access',
+				icon: ShieldUserIcon,
+				component: <AccessPage />,
 			},
 		],
 	},
