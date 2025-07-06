@@ -26,7 +26,6 @@ export interface LoggerConfig {
 	enableStackTrace: boolean;
 }
 
-// logger.ts
 class Logger {
 	private config: LoggerConfig;
 	private logs: LogEntry[] = [];
@@ -53,7 +52,6 @@ class Logger {
 		const stack = new Error().stack;
 		if (!stack) return undefined;
 
-		// Убираем первые 3 строки стека (Error, getStackTrace, log method)
 		return stack.split('\n').slice(3).join('\n');
 	}
 
@@ -69,23 +67,19 @@ class Logger {
 	): void {
 		if (!this.shouldLog(level)) return;
 
-		// Если передан только один параметр, считаем его сообщением
 		let actualTitle: string | undefined;
 		let actualMessage: any;
 		let actualContext: Record<string, any> | undefined;
 
 		if (message === undefined && typeof title !== 'string') {
-			// logger.error(errorObject)
 			actualMessage = title;
 			actualTitle = undefined;
 			actualContext = context;
 		} else if (typeof title === 'string' && message !== undefined) {
-			// logger.error('Title', errorObject)
 			actualTitle = title;
 			actualMessage = message;
 			actualContext = context;
 		} else {
-			// logger.error('Simple message')
 			actualMessage = title;
 			actualTitle = undefined;
 			actualContext = context;
@@ -100,7 +94,6 @@ class Logger {
 			context: actualContext,
 		};
 
-		// Сохраняем в массив
 		if (this.config.enableStorage) {
 			this.logs.push(entry);
 			if (this.logs.length > this.config.maxStorageEntries) {
@@ -108,7 +101,6 @@ class Logger {
 			}
 		}
 
-		// Выводим в консоль
 		if (this.config.enableConsole) {
 			this.outputToConsole(entry);
 		}
@@ -118,22 +110,18 @@ class Logger {
 		const time = this.formatDate(entry.timestamp);
 		const levelName = this.getLevelName(entry.level);
 
-		// Определяем метод консоли
 		const consoleMethod = this.getConsoleMethod(entry.level);
 
-		// Простой и надежный вывод
 		if (entry.title) {
 			consoleMethod(`[${time}] ${levelName} ${entry.title}:`, entry.message);
 		} else {
 			consoleMethod(`[${time}] ${levelName}`, entry.message);
 		}
 
-		// Выводим контекст если есть
 		if (entry.context) {
 			console.log('Context:', entry.context);
 		}
 
-		// Выводим стек если есть (только для ошибок)
 		if (entry.stack && entry.level >= LogLevel.ERROR) {
 			console.groupCollapsed('Stack trace');
 			console.log(entry.stack);
@@ -169,7 +157,6 @@ class Logger {
 		}
 	}
 
-	// Основные методы логирования
 	debug(title: string, message?: any, context?: Record<string, any>): void;
 	debug(message: any, context?: Record<string, any>): void;
 	debug(
@@ -220,7 +207,6 @@ class Logger {
 		this.log(LogLevel.FATAL, title, message, context);
 	}
 
-	// Утилитарные методы
 	setLevel(level: LogLevel): void {
 		this.config.level = level;
 	}
@@ -253,7 +239,6 @@ class Logger {
 			.join('\n');
 	}
 
-	// Метод для тестирования
 	test(): void {
 		console.log('=== Logger Test ===');
 		this.debug('Debug message');

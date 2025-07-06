@@ -1,16 +1,19 @@
 import { DataTable } from '@/shared/components/shared';
 
-import { useGetModels } from '../../hooks';
+import { useGetModels, useRemoveModel } from '../../hooks';
 
-import { modelsTableColumns } from './models-table-columns';
+import { createModelsTableColumns } from './models-table-columns';
 
 export function ModelsTable() {
 	const { models, isModelsLoading } = useGetModels();
+	const { removeModel } = useRemoveModel();
 
 	return (
 		<>
 			<DataTable
-				columns={modelsTableColumns}
+				columns={createModelsTableColumns({
+					removeModel,
+				})}
 				data={models || []}
 				isLoading={isModelsLoading}
 			/>

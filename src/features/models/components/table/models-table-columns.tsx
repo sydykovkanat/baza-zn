@@ -1,12 +1,19 @@
 import type { ColumnDef } from '@tanstack/react-table';
 import { InfoIcon, Trash2Icon } from 'lucide-react';
 
+import { ConfirmPopup } from '@/shared/components/shared';
 import { Badge, Button } from '@/shared/components/ui';
 
 import type { IModel } from '../../types';
 import { ModelsDetailDialog } from '../dialogs';
 
-export const modelsTableColumns: ColumnDef<IModel>[] = [
+interface ModelsTableColumnsProps {
+	removeModel: (modelId: string) => void;
+}
+
+export const createModelsTableColumns = ({
+	removeModel,
+}: ModelsTableColumnsProps): ColumnDef<IModel>[] => [
 	{
 		accessorKey: 'title',
 		header: 'Название',
@@ -67,7 +74,7 @@ export const modelsTableColumns: ColumnDef<IModel>[] = [
 
 			return (
 				<Badge variant={isParent ? 'default' : 'secondary'}>
-					{isParent ? 'Родитель' : parentModel.title || 'Нет'}
+					{isParent ? 'Родитель' : parentModel?.title || 'Нет'}
 				</Badge>
 			);
 		},
@@ -102,13 +109,14 @@ export const modelsTableColumns: ColumnDef<IModel>[] = [
 						</Button>
 					</ModelsDetailDialog>
 
-					<Button
-						size={'icon'}
-						variant={'ghost'}
-						className='hover:bg-destructive/20! hover:text-destructive'
-					>
-						<Trash2Icon />
-					</Button>
+					<ConfirmPopup onConfirm={() => removeModel(model._id)}>
+						<Button
+							size={'icon'}
+							variant={'ghost-destructive'}
+						>
+							<Trash2Icon />
+						</Button>
+					</ConfirmPopup>
 				</div>
 			);
 		},

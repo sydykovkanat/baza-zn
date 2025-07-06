@@ -1,5 +1,6 @@
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
+import { Loader2Icon } from 'lucide-react';
 import * as React from 'react';
 
 import { cn } from '@/shared/utils/index';
@@ -19,6 +20,7 @@ const buttonVariants = cva(
 					'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',
 				ghost:
 					'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
+				'ghost-destructive': 'hover:bg-destructive/20! hover:text-destructive',
 				link: 'text-primary underline-offset-4 hover:underline',
 			},
 			size: {
@@ -39,20 +41,38 @@ function Button({
 	className,
 	variant,
 	size,
+	loading = false,
 	asChild = false,
+	children,
 	...props
 }: React.ComponentProps<'button'> &
 	VariantProps<typeof buttonVariants> & {
+		loading?: boolean;
 		asChild?: boolean;
 	}) {
 	const Comp = asChild ? Slot : 'button';
 
+	if (asChild) {
+		return (
+			<Comp
+				className={cn(buttonVariants({ variant, size, className }))}
+				disabled={loading || props.disabled}
+				{...props}
+			>
+				{children}
+			</Comp>
+		);
+	}
+
 	return (
 		<Comp
-			data-slot='button'
 			className={cn(buttonVariants({ variant, size, className }))}
+			disabled={loading || props.disabled}
 			{...props}
-		/>
+		>
+			{loading && <Loader2Icon className='animate-spin' />}
+			{children}
+		</Comp>
 	);
 }
 
