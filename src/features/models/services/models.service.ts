@@ -13,6 +13,15 @@ class ModelService {
 		).data;
 	}
 
+	async getAllActive(): Promise<IModel[]> {
+		return (
+			await instance<IModel[]>({
+				method: 'GET',
+				url: '/models/get-active-model',
+			})
+		).data;
+	}
+
 	async create(data: ModelCreateSchema) {
 		return (
 			await instance<IModel>({

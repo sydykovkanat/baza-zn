@@ -1,8 +1,8 @@
 export type ILanguage = 'ru' | 'ky' | 'en' | 'uz';
 
 export const Language = {
-	RU: 'ru',
-	KY: 'ky',
-	EN: 'en',
-	UZ: 'uz',
-} as const;
+	RU: 'ru' as const,
+	KY: 'ky' as const,
+	EN: 'en' as const,
+	UZ: 'uz' as const,
+} satisfies Record<string, ILanguage>;
